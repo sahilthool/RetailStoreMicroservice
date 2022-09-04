@@ -17,5 +17,8 @@ public interface CustomerService {
 	
 	@PostMapping(path = "/customers",produces = MediaType.APPLICATION_JSON_VALUE,consumes = MediaType.APPLICATION_JSON_VALUE)
 	public Customer saveCustomer(@RequestBody Customer customer) ;
+	
+	@GetMapping(path = "/customers/{username}",produces = MediaType.APPLICATION_JSON_VALUE)
+	public Customer getCustomerByUsername(@PathVariable("username") String userName);
 
 }

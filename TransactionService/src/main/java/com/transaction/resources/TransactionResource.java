@@ -45,7 +45,7 @@ public class TransactionResource {
 	}
 	
 	@GetMapping(path = "/transactions/{cid}",produces = MediaType.APPLICATION_JSON_VALUE)
-	public Transaction getCustomerIdResource(@PathVariable("cid") int cid){
+	public Transaction getTransactionIdResource(@PathVariable("cid") int cid){
 		return transactionService.getTransactionId(cid);
 	}
 	

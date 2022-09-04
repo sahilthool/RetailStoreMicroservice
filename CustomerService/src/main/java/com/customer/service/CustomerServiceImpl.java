@@ -29,4 +29,11 @@ public class CustomerServiceImpl implements CustomerService {
 		return customerDao.save(customer);
 	}
 
+	@Override
+	public Customer getCustomerId(String userName) {
+		return customerDao.findByUserName(userName);
+	}
+	
+	
+
 }

@@ -34,5 +34,11 @@ public class CustomerResource {
 		Customer customer = customerService.getCustomer(userName, password);		
 		return customer;
 	}
+	
+	@GetMapping(path = "/customers/{username}",produces = MediaType.APPLICATION_JSON_VALUE)
+	public Customer getCustomerByUsernameResource(@PathVariable("username") String userName) {
+		Customer customer = customerService.getCustomerId(userName);		
+		return customer;
+	}
 
 }

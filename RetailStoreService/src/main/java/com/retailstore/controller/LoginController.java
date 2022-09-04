@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.retailstore.bean.Customer;
+import com.retailstore.bean.Transaction;
 import com.retailstore.service.CustomerService;
+import com.retailstore.service.TransactionService;
 
 
 
@@ -22,6 +24,9 @@ public class LoginController {
 	
 	@Autowired
 	private CustomerService customerService;
+	
+	@Autowired
+	private TransactionService transactionService;
 	
 
 	@RequestMapping("/")
@@ -56,7 +61,10 @@ public class LoginController {
 	public ModelAndView registerController(@ModelAttribute Customer customer,HttpSession session) {
 		
 		ModelAndView modelAndView=new ModelAndView();
-		if (customerService.saveCustomer(customer) != null) {	
+		Customer cus =  customerService.saveCustomer(customer);
+		if (cus != null) {	
+			//int cusId = customerService.getCustomerByUsername(customer.getUserName()).getCustomerID();
+			transactionService.saveTransaction(new Transaction(cus.getCustomerID(), cus.getCustomerID()));
 			//transactionService.addtransaction(new Transaction(customer.getCustomer_ID(), customer.getCustomer_ID()));
 			modelAndView.addObject("message", "Registration Successful");
 			modelAndView.setViewName("registersuccess");
