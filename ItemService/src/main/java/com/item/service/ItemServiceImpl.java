@@ -1,6 +1,7 @@
 package com.item.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,4 +18,18 @@ public class ItemServiceImpl implements ItemService {
 	public List<Item> getAllItems() {
 		return itemDao.findAll();
 	}
+	
+	@Override
+	public Optional<Item> findByItemId(int item_Id) {
+		return itemDao.findById(item_Id);
+	}
+
+	@Override
+	public Item saveTransaction(Item item) {
+		itemDao.save(item);
+		return item;
+	}
+	
+	
+
 }
