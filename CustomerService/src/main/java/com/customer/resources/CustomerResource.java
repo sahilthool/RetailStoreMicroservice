@@ -40,5 +40,4 @@ public class CustomerResource {
 		Customer customer = customerService.getCustomerId(userName);		
 		return customer;
 	}
-
 }
